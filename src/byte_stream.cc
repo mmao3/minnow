@@ -45,9 +45,15 @@ string_view Reader::peek() const
 void Reader::pop(uint64_t len)
 {
   uint64_t to_pop = min(len, buffer_.size());
-  for (size_t i = 0; i < to_pop; i++) {
-    buffer_.pop_front();
-  }
+  if (to_pop == buffer_.size()) {
+        buffer_.clear();  // Removes all elements in the buffer
+    } else {
+        // Pop elements one by one when len is less than buffer size
+        for (size_t i = 0; i < to_pop; i++) {
+            buffer_.pop_front();
+        }
+    }
+
   total_popped_ += to_pop;
 }
 
