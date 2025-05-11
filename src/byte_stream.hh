@@ -26,8 +26,8 @@ protected:
   // Please add any additional state to the ByteStream here, and not to the Writer and Reader interfaces.
   uint64_t capacity_;
   std::deque<char> buffer_;
-  uint64_t total_pushed_ = 0;
-  uint64_t total_popped_ = 0;
+  uint64_t total_pushed_;
+  uint64_t total_popped_;
   bool closed_ = false;
   bool error_ {};
 };
