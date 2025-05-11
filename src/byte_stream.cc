@@ -35,8 +35,7 @@ uint64_t Writer::bytes_pushed() const
 
 string_view Reader::peek() const
 {
-  std::string temp(buffer_.begin(), buffer_.end());
-  return std::string_view(temp);
+  return std::string_view(buffer_.data(), buffer_.size());
 }
 
 void Reader::pop(uint64_t len)
